@@ -1,0 +1,204 @@
+extends layouts/master
+
+block stylesheets
+	style(type='text/css').
+		html,body {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+
+block content
+
+block scripts
+	script(type="text/javascript", src="js/dom2three.js")
+	script(type="text/javascript", src="js/lib/three.min.js")
+	script(type="text/javascript", src="js/lib/OrbitControls.js")
+	script(type="text/javascript", src="js/lib/VRControls.js")
+	script(type="text/javascript", src="js/lib/VREffect.js")
+
+	script.
+		// bend function
+		function bend( group, amount, multiMaterialObject ) {
+			function bendVertices( mesh, amount, parent ) {
+				var vertices = mesh.geometry.vertices;
+
+				if (!parent) {
+					parent = mesh;
+				}
+
+				for (var i = 0; i < vertices.length; i++) {
+					var vertex = vertices[i];
+
+					// apply bend calculations on vertexes from world coordinates
+					parent.updateMatrixWorld();
+
+					var worldVertex = parent.localToWorld(vertex);
+
+					var worldX = Math.sin( worldVertex.x / amount) * amount;
+					var worldZ = - Math.cos( worldVertex.x / amount ) * amount;
+					var worldY = worldVertex.y 	;
+
+					// convert world coordinates back into local object coordinates.
+					var localVertex = parent.worldToLocal(new THREE.Vector3(worldX, worldY, worldZ));
+					vertex.x = localVertex.x;
+					vertex.z = localVertex.z+amount;
+					vertex.y = localVertex.y;
+				};
+
+				mesh.geometry.computeBoundingSphere();
+				mesh.geometry.verticesNeedUpdate = true;
+			}
+
+			for ( var i = 0; i < group.children.length; i ++ ) {
+				var element = group.children[ i ];
+
+				if (element.geometry.vertices) {
+					if (multiMaterialObject) {
+						bendVertices( element, amount, group);
+					} else {
+						bendVertices( element, amount);
+					}
+				}
+			}
+
+			if (group.children.length == 0) {
+				bendVertices(group, amount);
+			}
+
+		};
+
+
+		var renderer = new THREE.WebGLRenderer( { antialias: true } );
+		
+		var effect = new THREE.VREffect(renderer);
+		effect.setSize(window.innerWidth, window.innerHeight);
+
+		document.body.appendChild(renderer.domElement);
+		
+		var scene = new THREE.Scene();
+		
+		var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.0001, 10000 );
+		camera.position.z = 0.0001;
+
+		//var controls = new THREE.OrbitControls(camera);
+		var controls = new THREE.VRControls(camera);
+
+		var d23 = DOM2three.load('dom2three',{
+			/*
+			makeMeshes option generates three.js compatible layers.
+			*/
+			makeMeshes: true,
+			/* 
+			pixelScale sets the pixel to three.js units ratio.   1px = 1 three.js unit.
+			*/
+			pixelScale: 0.001
+		});
+
+		d23.loaded.then(function() {
+			
+			var rad = 1; // default radius.
+			
+			var group = new THREE.Object3D(),
+				mesh,
+				layers = {},
+				attributes = ['position', 'rotation'],
+				prefix = 'data-',
+				cords = ['x','y','z'],
+				mesh_property,
+				mesh_radius; 
+
+			group.position.set(0,0,-rad);
+
+			d23.nodes.forEach(function(node) {
+				mesh = node.mesh;
+
+				attributes.forEach(function(attr) {
+					if (node[prefix + attr]) {
+						
+						cords.forEach(function(cord, i) {
+							// apply relative posiitoning from node properties
+							mesh[attr][cord] += node[prefix + attr][i];
+							
+							// check z depth of each mesh and store into layers
+							if (cord == 'z' && attr == 'position') { // only z position cords
+								mesh_radius = mesh[attr][cord];
+								
+								if (!layers.hasOwnProperty(mesh_radius)) {
+									layers[mesh_radius.toString()] = {
+										meshes: []
+									};
+								} 
+
+								// scale mesh so in remains proportional to DOM layout.
+								var scale = rad+mesh_radius;
+								mesh.scale.x *= scale;
+								mesh.scale.y *= scale;
+
+								layers[mesh_radius.toString()].meshes.push(mesh);
+								
+							}
+							
+							
+						});
+					}
+				});
+
+				
+				group.add(mesh);
+				
+			});
+
+			// 0 depth
+			bend(group, rad);
+			scene.add(group);
+
+			// all other depths
+			for(var radius in layers) {
+				var rad_group = new THREE.Object3D();
+
+				rad_group.position.set(0,0,-(rad + parseFloat(radius)));
+
+				layers[radius].meshes.forEach(function(mesh, i) {
+					rad_group.add(mesh);
+				})
+
+				bend(rad_group, rad + parseFloat(radius));
+
+				scene.add(rad_group);
+			}
+			
+			// -------------------
+
+			function animate() {
+				controls.update();
+				effect.render(scene, camera);
+				requestAnimationFrame(animate);
+			};
+
+			animate();
+
+			function fullscreen() {
+				effect.setFullScreen(true);
+			}
+
+			document.addEventListener( 'dblclick', fullscreen);
+
+			window.addEventListener("keydown", function(e) {
+				//console.log(e.keyCode);
+				if (e.keyCode == 90) { //z
+					controls.zeroSensor();
+				} else if (e.keyCode == 70) { //f
+					fullscreen();
+				}
+			}, true);
+
+			window.addEventListener('resize', function() {
+				effect.setSize( window.innerWidth, window.innerHeight );
+			}, false );
+
+		});
+		
+		
+		
+

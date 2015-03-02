@@ -1,0 +1,123 @@
+$font-small: 1.5rem;
+$font-med: 2rem;
+$font-large: 1.75rem;
+$font-mega: 2.5rem;
+
+html, body {
+  /* we want to set a absolute width here since slimer.js will trim layout otherwise. */
+  width: 360rem;
+  height: 90rem;
+}
+
+body {
+  background: url('../images/background.png') no-repeat;
+  background-size: 100%;
+  font-family: 'Montserrat';
+  font-size: 10px;
+  font-weight: 400;
+  margin: 0;
+  text-rendering: optimizeLegibility;
+}
+
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+/*
+container for layout
+*/
+#layout {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-align: center;
+}
+/*
+guidelines
+*/
+#layout:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  background: red;
+  left: 50%;
+  top: 0px;
+  width: 2px;
+  height: 100%;
+}
+#layout:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  background: blue;
+  left: 0px;
+  top: 50%;
+  height: 2px;
+  width: 100%;
+}
+
+
+
+
+
+
+
+#favorites {
+  display: inline-block;
+}
+
+.fav {
+  width: 22rem;
+  height: 30rem;
+  margin: 0 3rem 0rem 0;
+  background: #fff;
+  float: left;
+  position: relative;
+  cursor: pointer;
+  color: #000;
+  overflow: hidden;
+  
+  img {
+    width: 100%;
+    height: 20rem;
+    vertical-align: bottom;
+  }
+}
+.fav:last-child {
+  margin-right: 0;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.fav-inner {
+  width: 100%;
+  height: 10rem;
+  padding: 1.5rem;
+  font-size: $font-med;
+  font-weight: 700;
+  line-height: $font-small + 0.25rem;
+  letter-spacing: 0.0175rem;
+  text-transform: uppercase;
+  color: rgba( 77, 77, 77, 1 );
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  display: table-cell;
+  //vertical-align: middle;
+
+  .type {
+    font-size: $font-small;
+    font-weight: 400;
+    color: rgba( 133, 133, 133, 1 )
+  }
+}
+
+
+
