@@ -1,83 +1,380 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+<!-- saved from url=(0036)http://www.jeshua.me/spectrascade/sc -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title> Spectrascade: Webgl Music Visualization</title>
+	
+	
+<script src="./Spectrascade  Webgl Music Visualization_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./Spectrascade  Webgl Music Visualization_files/plusone.js" gapi_processed="true"></script><script id="facebook-jssdk" src="./Spectrascade  Webgl Music Visualization_files/all.js"></script><script id="twitter-wjs" src="./Spectrascade  Webgl Music Visualization_files/widgets.js"></script><script type="text/javascript" async="" src="./Spectrascade  Webgl Music Visualization_files/ga.js"></script><script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-22901398-2']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+	
+<meta content="http://jeshua.me/spectrascade/images/thumbnail.png" property="og:image">
 
-    <title>5d.io by Web5design</title>
-  </head>
+	
+<meta content="Spectrascade: Webgl Music Visualization" property="og:title">
 
-  <body>
-    <header>
-      <div class="inner">
-        <h1>5d.io</h1>
-        <h2></h2>
-        <a href="https://github.com/Web5design/5d.io" class="button"><small>View project on</small>GitHub</a>
+	
+<meta content="http://jeshua.me/spectrascade/sc" property="og:url">
+
+	
+<meta content="Spectrascade: Webgl Music Visualization" itemprop="name">
+
+	
+<script type="text/javascript">
+!function(d,s,id){
+    var js,fjs=d.getElementsByTagName(s)[0];
+    if(!d.getElementById(id)){
+        js=d.createElement(s);
+        js.id=id;
+        js.src="//platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js,fjs);
+    }
+}(document,"script","twitter-wjs");
+
+!function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=201371076555991";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk');
+
+!function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+}();
+
+</script>
+
+	
+<style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}
+.fb_invisible{display:none}
+.fb_reset{background:none;border-spacing:0;border:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}
+.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}
+.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}
+.fb_dialog_content{background:#fff;color:#333}
+.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yA/x/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/y6/x/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\9;right:7px\9}
+.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}
+.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}
+.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yA/x/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/y6/x/s816eWC-2sl.gif)}
+.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yA/x/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/y6/x/s816eWC-2sl.gif)}
+.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}
+.fb_dialog_top_left,
+.fb_dialog_top_right,
+.fb_dialog_bottom_left,
+.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}
+.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yR/x/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}
+.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yR/x/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}
+.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yR/x/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}
+.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yR/x/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right,
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right{width:10px;height:100%}
+.fb_dialog_vert_left{margin-left:-10px}
+.fb_dialog_vert_right{right:0;margin-right:-10px}
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{width:100%;height:10px}
+.fb_dialog_horiz_top{margin-top:-10px}
+.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}
+.fb_dialog_iframe{line-height:0}
+.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}
+.fb_dialog_content .dialog_title > span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yD/x/Cou7n-nqK52.gif)
+no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}
+body.fb_hidden{-webkit-transform:none;height:100%;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100%
+}
+.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yc/x/3rhSv5V8j3o.gif)
+white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}
+.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}
+#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}
+#fb-root #fb_dialog_ipad_overlay.hidden{display:none}
+.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}
+.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}
+.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%
+}
+.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100%, from(#4966A6),
+color-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,
+rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}
+.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}
+.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yJ/x/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}
+.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}
+#fb_dialog_loader_close{float:left}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{position:relative;display:-moz-inline-block;display:inline-block}
+.fb_iframe_widget iframe{position:absolute}
+.fb_iframe_widget_lift{z-index:1}
+.fb_iframe_widget span{position:relative;display:inline-block;vertical-align:text-bottom;text-align:justify}
+.fb_hide_iframes iframe{position:relative;left:-10000px}
+.fb_iframe_widget_loader{position:relative;display:inline-block}
+.fb_iframe_widget_fluid{display:inline}
+.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}
+.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yJ/x/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_button_simple,
+.fb_button_simple_rtl{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yH/x/eIpbnVKI9lR.png);background-repeat:no-repeat;cursor:pointer;outline:none;text-decoration:none}
+.fb_button_simple_rtl{background-position:right 0}
+.fb_button_simple .fb_button_text{margin:0 0 0 20px;padding-bottom:1px}
+.fb_button_simple_rtl .fb_button_text{margin:0 10px 0 0}
+a.fb_button_simple:hover .fb_button_text,
+a.fb_button_simple_rtl:hover .fb_button_text,
+.fb_button_simple:hover .fb_button_text,
+.fb_button_simple_rtl:hover .fb_button_text{text-decoration:underline}
+.fb_button,
+.fb_button_rtl{background:#29447e url(http://static.ak.fbcdn.net/rsrc.php/v2/yl/x/FGFbc80dUKj.png);background-repeat:no-repeat;cursor:pointer;display:inline-block;padding:0 0 0 1px;text-decoration:none;outline:none}
+.fb_button .fb_button_text,
+.fb_button_rtl .fb_button_text{background:#5f78ab url(http://static.ak.fbcdn.net/rsrc.php/v2/yl/x/FGFbc80dUKj.png);border-top:solid 1px #879ac0;border-bottom:solid 1px #1a356e;color:#fff;display:block;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-weight:bold;padding:2px 6px 3px 6px;margin:1px 1px 0 21px;text-shadow:none}
+a.fb_button,
+a.fb_button_rtl,
+.fb_button,
+.fb_button_rtl{text-decoration:none}
+a.fb_button:active .fb_button_text,
+a.fb_button_rtl:active .fb_button_text,
+.fb_button:active .fb_button_text,
+.fb_button_rtl:active .fb_button_text{border-bottom:solid 1px #29447e;border-top:solid 1px #45619d;background:#4f6aa3;text-shadow:none}
+.fb_button_xlarge,
+.fb_button_xlarge_rtl{background-position:left -60px;font-size:24px;line-height:30px}
+.fb_button_xlarge .fb_button_text{padding:3px 8px 3px 12px;margin-left:38px}
+a.fb_button_xlarge:active{background-position:left -99px}
+.fb_button_xlarge_rtl{background-position:right -268px}
+.fb_button_xlarge_rtl .fb_button_text{padding:3px 8px 3px 12px;margin-right:39px}
+a.fb_button_xlarge_rtl:active{background-position:right -307px}
+.fb_button_large,
+.fb_button_large_rtl{background-position:left -138px;font-size:13px;line-height:16px}
+.fb_button_large .fb_button_text{margin-left:24px;padding:2px 6px 4px 6px}
+a.fb_button_large:active{background-position:left -163px}
+.fb_button_large_rtl{background-position:right -346px}
+.fb_button_large_rtl .fb_button_text{margin-right:25px}
+a.fb_button_large_rtl:active{background-position:right -371px}
+.fb_button_medium,
+.fb_button_medium_rtl{background-position:left -188px;font-size:11px;line-height:14px}
+a.fb_button_medium:active{background-position:left -210px}
+.fb_button_medium_rtl{background-position:right -396px}
+.fb_button_text_rtl,
+.fb_button_medium_rtl .fb_button_text{padding:2px 6px 3px 6px;margin-right:22px}
+a.fb_button_medium_rtl:active{background-position:right -418px}
+.fb_button_small,
+.fb_button_small_rtl{background-position:left -232px;font-size:10px;line-height:10px}
+.fb_button_small .fb_button_text{padding:2px 6px 3px;margin-left:17px}
+a.fb_button_small:active,
+.fb_button_small:active{background-position:left -250px}
+.fb_button_small_rtl{background-position:right -440px}
+.fb_button_small_rtl .fb_button_text{padding:2px 6px;margin-right:18px}
+a.fb_button_small_rtl:active{background-position:right -458px}
+.fb_share_count_wrapper{position:relative;float:left}
+.fb_share_count{background:#b0b9ec none repeat scroll 0 0;color:#333;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;text-align:center}
+.fb_share_count_inner{background:#e8ebf2;display:block}
+.fb_share_count_right{margin-left:-1px;display:inline-block}
+.fb_share_count_right .fb_share_count_inner{border-top:solid 1px #e8ebf2;border-bottom:solid 1px #b0b9ec;margin:1px 1px 0 1px;font-size:10px;line-height:10px;padding:2px 6px 3px;font-weight:bold}
+.fb_share_count_top{display:block;letter-spacing:-1px;line-height:34px;margin-bottom:7px;font-size:22px;border:solid 1px #b0b9ec}
+.fb_share_count_nub_top{border:none;display:block;position:absolute;left:7px;top:35px;margin:0;padding:0;width:6px;height:7px;background-repeat:no-repeat;background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yP/x/bSOHtKbCGYI.png)}
+.fb_share_count_nub_right{border:none;display:inline-block;padding:0;width:5px;height:10px;background-repeat:no-repeat;background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/x/i_oIVTKMYsL.png);vertical-align:top;background-position:right 5px;z-index:10;left:2px;margin:0 2px 0 0;position:relative}
+.fb_share_no_count{display:none}
+.fb_share_size_Small .fb_share_count_right .fb_share_count_inner{font-size:10px}
+.fb_share_size_Medium .fb_share_count_right .fb_share_count_inner{font-size:11px;padding:2px 6px 3px;letter-spacing:-1px;line-height:14px}
+.fb_share_size_Large .fb_share_count_right .fb_share_count_inner{font-size:13px;line-height:16px;padding:2px 6px 4px;font-weight:normal;letter-spacing:-1px}
+.fb_share_count_hidden .fb_share_count_nub_top,
+.fb_share_count_hidden .fb_share_count_top,
+.fb_share_count_hidden .fb_share_count_nub_right,
+.fb_share_count_hidden .fb_share_count_right{visibility:hidden}
+.fb_connect_bar_container div,
+.fb_connect_bar_container span,
+.fb_connect_bar_container a,
+.fb_connect_bar_container img,
+.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}
+.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}
+.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+"px":body.scrollTop+"px")}
+.fb_connect_bar{position:relative;margin:auto;height:100%;width:100%;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:"lucida grande", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}
+.fb_connect_bar a:hover{color:#fff}
+.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}
+.fb_connect_bar div a,
+.fb_connect_bar span,
+.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}
+.fb_connect_bar .fb_buttons{float:right;margin-top:7px}
+.fb_edge_widget_with_comment{position:relative;*z-index:1000}
+.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50% 50%;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender
+.FB_Loader{margin-top:0}
+.fbpluginrecommendationsbarleft,
+.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}
+/* @noflip */
+.fbpluginrecommendationsbarleft{left:10px}
+/* @noflip */
+.fbpluginrecommendationsbarright{right:10px}
+</style></head>
+<body data-twttr-rendered="true">	
+	
+
+		
+
+<div id="real_content">
+ 	<link href="./Spectrascade  Webgl Music Visualization_files/main.css" type="text/css" rel="stylesheet">
+        <link type="image/x-icon" href="http://www.jeshua.me/spectrascade/favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="./Spectrascade  Webgl Music Visualization_files/jquery-ui-1.8.18.custom.css" type="text/css">
+    
+    <script src="./Spectrascade  Webgl Music Visualization_files/spidergl.js" type="text/javascript"></script>
+    <script src="./Spectrascade  Webgl Music Visualization_files/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="./Spectrascade  Webgl Music Visualization_files/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
+    <script src="./Spectrascade  Webgl Music Visualization_files/glMatrix-0.9.5.min.js" type="text/javascript"></script>
+    <script src="./Spectrascade  Webgl Music Visualization_files/BrowserDetect.js" type="text/javascript"></script>
+    
+    <script src="./Spectrascade  Webgl Music Visualization_files/glBox.js" type="text/javascript"></script>
+    <script src="./Spectrascade  Webgl Music Visualization_files/glSphere.js" type="text/javascript"></script>
+    <script src="./Spectrascade  Webgl Music Visualization_files/glGrid.js" type="text/javascript"></script>  
+    <script src="./Spectrascade  Webgl Music Visualization_files/Particle.js" type="text/javascript"></script>
+    <script src="./Spectrascade  Webgl Music Visualization_files/Settings.js" type="text/javascript"></script>
+    <script src="./Spectrascade  Webgl Music Visualization_files/Terrain.js" type="text/javascript"></script>  
+    <script src="./Spectrascade  Webgl Music Visualization_files/Stage.js" type="text/javascript"></script>
+    <script src="./Spectrascade  Webgl Music Visualization_files/ParticleSystem.js" type="text/javascript"></script>
+    
+    <script src="./Spectrascade  Webgl Music Visualization_files/DataTransfer.js" type="text/javascript"></script>
+    <script src="./Spectrascade  Webgl Music Visualization_files/Audio.js" type="text/javascript"></script>
+    <script src="./Spectrascade  Webgl Music Visualization_files/ColorScheme.js" type="text/javascript"></script>
+    <script src="./Spectrascade  Webgl Music Visualization_files/VisualsUpdate.js" type="text/javascript"></script>   
+
+    <script type="x-shader/x-vertex" id="PARTICLE_VERTEX_SHADER">
+      #ifdef GL_ES
+      precision highp float;
+      #endif
+      uniform   mat4 u_mvp;
+
+      attribute vec4 a_position;
+      attribute float a_size;
+      attribute vec4 a_color;
+      varying   vec4 v_color;
+
+      void main(void)
+      {
+       v_color = a_color;   
+       gl_Position = u_mvp * a_position;      
+       gl_PointSize = a_size;
+      }
+    </script>
+
+    <script type="x-shader/x-fragment" id="PARTICLE_FRAGMENT_SHADER">
+      #ifdef GL_ES
+      precision highp float;
+      #endif
+      varying vec4 v_color;
+      uniform sampler2D s_texture;
+
+      void main(void)
+      {     
+      vec4 col;
+      col = texture2D(s_texture, gl_PointCoord);
+      col.a = col.r;
+      if(col.a == 0.) discard;
+      vec4 tex = v_color*col;        
+      gl_FragColor = tex;
+      }
+    </script>
+   <script type="x-shader/x-fragment" id="PARTICLE_TAIL_FRAGMENT_SHADER">
+      #ifdef GL_ES
+      precision highp float;
+      #endif
+      varying vec4 v_color;
+      uniform sampler2D s_texture;
+
+      void main(void)
+      {     
+          gl_FragColor = v_color;
+      }
+    </script>
+
+    <script type="x-shader/x-vertex" id="BOX_VERTEX_SHADER">
+      precision lowp float;
+      uniform   mat4 u_mvp;
+      attribute vec3 a_position;
+      attribute vec4 a_color;
+      varying   vec4 v_color;
+      void main(void)
+      {
+      v_color    = a_color;
+      gl_Position = u_mvp * vec4(a_position, 1.0);
+      gl_PointSize = 15.;
+      }
+    </script>
+
+    <script type="x-shader/x-fragment" id="BOX_FRAGMENT_SHADER">
+       precision lowp float;
+      varying vec4 v_color;
+      void main(void)
+      {
+      gl_FragData[0] =v_color;
+      }
+    </script>
+
+    <script src="./Spectrascade  Webgl Music Visualization_files/utils.js" type="text/javascript"></script>
+
+    <div id="errors"></div>
+    <div id="content">
+      <div id="settingsDiv"><div id="randomizeAll" class="settingButton">randomize</div><br><div id="resetAll" class="settingButton">reset</div><div class="setting"><span class="settingReset" id="numreset">num</span><input id="numbox" class="settingVal" x-webkit-speech=""><br><div id="numslider" class="settingSlider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.jeshua.me/spectrascade/sc#" style="left: 60.67415730337079%; "></a></div></div><div class="setting"><span class="settingReset" id="spreadreset">spread</span><input id="spreadbox" class="settingVal" x-webkit-speech=""><br><div id="spreadslider" class="settingSlider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.jeshua.me/spectrascade/sc#" style="left: 6%; "></a></div></div><div class="setting"><span class="settingReset" id="spawnreset">spawn</span><input id="spawnbox" class="settingVal" x-webkit-speech=""><br><div id="spawnslider" class="settingSlider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.jeshua.me/spectrascade/sc#" style="left: 7.865168539325842%; "></a></div></div><div class="setting"><span class="settingReset" id="lifetimereset">lifetime</span><input id="lifetimebox" class="settingVal" x-webkit-speech=""><br><div id="lifetimeslider" class="settingSlider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.jeshua.me/spectrascade/sc#" style="left: 42.687%; "></a></div></div><div class="setting"><span class="settingReset" id="gravFreset">gravF</span><input id="gravFbox" class="settingVal" x-webkit-speech=""><br><div id="gravFsliderNeg" class="settingHalfSlider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.jeshua.me/spectrascade/sc#" style="left: 100%; "></a></div><div id="gravFslider" class="settingHalfSlider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.jeshua.me/spectrascade/sc#" style="left: 38.598%; "></a></div></div><div class="setting"><span class="settingReset" id="gravExpreset">gravExp</span><input id="gravExpbox" class="settingVal" x-webkit-speech=""><br><div id="gravExpslider" class="settingSlider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.jeshua.me/spectrascade/sc#" style="left: 25%; "></a></div></div><div class="setting"><span class="settingReset" id="cameraSpeedreset">cameraSpeed</span><input id="cameraSpeedbox" class="settingVal" x-webkit-speech=""><br><div id="cameraSpeedsliderNeg" class="settingHalfSlider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.jeshua.me/spectrascade/sc#" style="left: 100%; "></a></div><div id="cameraSpeedslider" class="settingHalfSlider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.jeshua.me/spectrascade/sc#" style="left: 1%; "></a></div></div><div class="setting"><span class="settingReset" id="vDampreset">vDamp</span><input id="vDampbox" class="settingVal" x-webkit-speech=""><br><div id="vDampslider" class="settingSlider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.jeshua.me/spectrascade/sc#" style="left: 92%; "></a></div></div><div class="setting"><span class="settingReset" id="pSzBasereset">pSzBase</span><input id="pSzBasebox" class="settingVal" x-webkit-speech=""><br><div id="pSzBaseslider" class="settingSlider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.jeshua.me/spectrascade/sc#" style="left: 28.749999999999996%; "></a></div></div><div class="setting"><span class="settingReset" id="pTailreset">pTail</span><input id="pTailbox" class="settingVal" x-webkit-speech=""><br><div id="pTailslider" class="settingSlider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.jeshua.me/spectrascade/sc#" style="left: 20%; "></a></div></div><div class="setting"><span class="settingReset" id="gravreset">grav</span><input id="gravbox" class="settingVal" x-webkit-speech=""><br><div id="gravsliderNeg" class="settingHalfSlider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.jeshua.me/spectrascade/sc#" style="left: 100%; "></a></div><div id="gravslider" class="settingHalfSlider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.jeshua.me/spectrascade/sc#" style="left: 0%; "></a></div></div><div class="setting"><span class="settingReset" id="lineWreset">lineW</span><input id="lineWbox" class="settingVal" x-webkit-speech=""><br><div id="lineWslider" class="settingSlider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.jeshua.me/spectrascade/sc#" style="left: 14.905450500556174%; "></a></div></div><div class="setting"><span class="settingReset" id="musicMultreset">musicMult</span><input id="musicMultbox" class="settingVal" x-webkit-speech=""><br><div id="musicMultslider" class="settingSlider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.jeshua.me/spectrascade/sc#" style="left: 11.25%; "></a></div></div><div class="setting"><select class="settingDropdown" id="texturebox"><option value="0">tex-flare.png</option><option value="1">tex-blob.png</option><option value="2">tex-plus.png</option><option value="3">tex-star.png</option></select></div><div class="setting"><select class="settingDropdown" id="colorsbox"><option value="0">storm</option><option value="1">fire</option></select></div><div class="settingCheck">multiSource<br><input type="checkbox" id="multiSource" value=""></div><div class="settingCheck">follow<br><input type="checkbox" id="follow" value=""></div><div class="settingCheck">mouseUpdate<br><input type="checkbox" id="mouseUpdate" value=""></div><div class="settingCheck">rotate<br><input type="checkbox" id="rotate" value=""></div><div class="settingCheck">camera<br><input type="checkbox" id="camera" value=""></div><div class="settingCheck">additive<br><input type="checkbox" id="additive" value=""></div></div>
+      <div id="songDiv">
+        <audio controls="controls" class="audioObj" preload="none" src="https://s3.amazonaws.com/jaVis/CapitalG.ogg" id="audio"></audio>
+        <div id="songInfoDiv"><div>Song: Capital G<br>Artist: Nine Inch Nails<br>url: <a href="http://www.nin.com/">http://www.nin.com</a></div><div id="skipSong" class="settingButton">skip&gt;&gt;</div></div>
       </div>
-    </header>
-
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/Web5design/5d.io/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/Web5design/5d.io/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/Web5design/5d.io"></a> is maintained by <a href="https://github.com/Web5design">Web5design</a>.</p>
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+      <div id="linksDiv"><div id="getString">links -- <a href="./Spectrascade  Webgl Music Visualization_files/Spectrascade  Webgl Music Visualization.html">random song</a> -- <a href="http://www.jeshua.me/spectrascade/sc?song=CapitalG">this song</a> -- <a href="http://www.jeshua.me/spectrascade/sc?multiSource=true&follow=true&rotate=true&camera=true&">these settings (random song)</a> -- <a href="http://www.jeshua.me/spectrascade/sc?song=CapitalG&multiSource=true&follow=true&rotate=true&camera=true&">these settings (this song)</a> -- <a href="http://www.jeshua.me/spectrascade/sc?song=none">no song</a></div></div>
+      <script src="./Spectrascade  Webgl Music Visualization_files/spectrascade.js" type="text/javascript"></script>
+      <canvas style="display: inline; cursor: default; " height="810" width="1623" id="mainCanvas" contenteditable="true">
+      </canvas>
     </div>
 
+
+  </div><div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px; "><div><iframe id="fb_xdm_frame_http" name="fb_xdm_frame_http" src="./Spectrascade  Webgl Music Visualization_files/xd_arbiter.html"></iframe><iframe id="fb_xdm_frame_https" name="fb_xdm_frame_https" src="./Spectrascade  Webgl Music Visualization_files/xd_arbiter(1).html"></iframe></div><div><iframe style="display: none; " id="f3c449734" name="f3c449734" src="./Spectrascade  Webgl Music Visualization_files/oauth.html"></iframe></div></div></div>
+
+<div id="title" class="broke-endless-pages">
+  Spectrascade - by <a href="http://www.jeshua.me/">Jeshua Bratman</a>
+  and <a href="http://www.annachen.me/">Anna Chen</a>.
+  <div style="opacity:.3;">
+    <div class="fbButton">
+      <div data-font="arial" data-action="recommend" data-show-faces="false" data-width="30" data-layout="button_count" data-send="false" data-href="http://jeshua.me/spectrascade/sc" class="fb-like fb_edge_widget_with_comment fb_iframe_widget"><span style="height: 20px; width: 115px; "><iframe id="f33509d478" name="f27bdcf304" scrolling="no" style="border: none; overflow: hidden; height: 20px; width: 115px; " title="Like this content on Facebook." class="fb_ltr" src="./Spectrascade  Webgl Music Visualization_files/like.html"></iframe></span></div>
+    </div>
+    <div class="gplusButton">
+      <iframe allowtransparency="true" frameborder="0" scrolling="no" src="./Spectrascade  Webgl Music Visualization_files/tweet_button.1347008535.html" class="twitter-share-button twitter-count-horizontal" style="width: 107px; height: 20px; " title="Twitter Tweet Button" data-twttr-rendered="true"></iframe>
+    </div>
+    <div class="twitterButton">
+      <div style="height: 24px; width: 106px; display: inline-block; text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; background-position: initial initial; background-repeat: initial initial; " id="___plusone_0"><iframe allowtransparency="true" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 106px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px; " tabindex="0" vspace="0" width="100%" id="I0_1348031174442" name="I0_1348031174442" src="./Spectrascade  Webgl Music Visualization_files/fastbutton.html" title="+1"></iframe></div>
+    </div>
+  </div>
+</div>
+	
+	<div>
+	<script type="text/javascript">
+      var sc_project=6098430; 
+      var sc_invisible=1; 
+      var sc_security="4195145c"; 
+    </script>
+	<script src="./Spectrascade  Webgl Music Visualization_files/counter_xhtml.js" type="text/javascript"></script>
+</div>
+
+
+<script type="text/javascript" src="./Spectrascade  Webgl Music Visualization_files/liftAjax.js"></script>
+
+	
+<script type="text/javascript">
+// <![CDATA[
+
+var lift_page = "F64775639605UME3QK";
+// ]]>
+</script>
   
-  </body>
-</html>
+  </body></html>
